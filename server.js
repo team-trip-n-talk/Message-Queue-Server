@@ -1,9 +1,9 @@
 'use strict';
 
-// require('dotenv').config();
+require('dotenv').config();
 const Q = require('@nmq/q/server');
 
 Q.start();
 
-const api = new Q('api');
-api.monitorEvent('msg');
+const messageQ = new Q('messageQ');
+messageQ.monitorEvent('message');
