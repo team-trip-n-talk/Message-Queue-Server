@@ -1,9 +1,12 @@
 'use strict';
 
-// require('dotenv').config();
-const Q = require('@nmq/q/server');
+require('dotenv').config();
 
-Q.start();
+const io = require('socket.io')(process.env.PORT);
 
-const api = new Q('api');
-api.monitorEvent('msg');
+io.on('connection', socket => {
+  console.log(`Connected socket id: ${socket.id}`);
+  socket.on('message', payload => {
+    socket.broadcast.emit('message', payload);
+  });
+});
