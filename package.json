@@ -25,6 +25,8 @@
     "eslint": "^5.16.0",
     "jest": "^23.6.0",
     "jsonwebtoken": "^8.5.1",
+    "jsdoc": "^3.6.2",
+    "express": "^4.16.3",
     "socket.io": "^2.2.0"
   }
 }
