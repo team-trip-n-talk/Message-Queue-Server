@@ -1,28 +1,31 @@
-# Trip'N'Talk
+## Project Name
+Trip 'n' Talk Message Queue Server
 
-## Message Queue Server
+[![Build Status](https://www.travis-ci.com/team-trip-n-talk/Message-Queue-Server.svg?branch=master)](https://www.travis-ci.com/team-trip-n-talk/Message-Queue-Server)
 
-### Authors: Tia, Jeff, Felipe
+### Authors: 
+Tia Rose, Jeff Lawrence, Felipe Delatorre
 
 ### Links and Resources
-* [Client Side App - link TBD](http://xyz.com)
+* [Github](https://github.com/team-trip-n-talk/Message-Queue-Server)
+* [Travis](https://www.travis-ci.com/team-trip-n-talk/Message-Queue-Server)
+* [Heroku](https://trip-n-talk-message-server.herokuapp.com/)
 
-### Modules
-#### `moduleName.js`
+#### Documentation
+* [JSDOC](https://trip-n-talk-message-server.herokuapp.com/docs)
+* [Data Flow Chart](https://www.lucidchart.com/documents/edit/b4adc909-52d2-460a-9a0a-d8cfb7211ec5/0)
 
-`foo(thing) -> string`
-Helps display an incoming message
+### Module
+* `server.js` - server that listens for incoming messages, authenticates them with attached tokens and broadcasts messages
 
 ### Setup
+
 #### `.env` requirements
-* `Q_SERVER` - ????
+* `PORT=`
+* `SECRET_KEY=`
 
 #### Running the app
 * `npm start`
-Starts off server
   
 #### Tests
-`npm test`
-
-#### UML
-Link to an image of the UML for your application and response to events
+* `npm test`
