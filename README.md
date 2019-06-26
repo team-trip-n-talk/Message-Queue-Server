@@ -20,7 +20,7 @@ Tia Rose, Jeff Lawrence, Felipe Delatorre
 
 ### Setup
 
-#### `.env` requirements
+#### `.env` requirements - see env-sample or look below
 * `PORT=`
 * `SECRET_KEY=`
 
