@@ -12,7 +12,7 @@
     "test-watch": "jest --watchAll --coverage",
     "test": "jest --coverage",
     "lint": "eslint \"**/*.js\"",
-    "jsodc": "jsdoc -c ./docs/config/jsdoc.config.json ."
+    "jsdoc": "jsdoc -c ./docs/config/jsdoc.config.json ."
   },
   "jest": {
     "testEnvironment": "node"
