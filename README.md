@@ -29,3 +29,6 @@ Tia Rose, Jeff Lawrence, Felipe Delatorre
   
 #### Tests
 * `npm test`
+
+### Group Agreement
+* [Group Agreement](https://github.com/team-trip-n-talk/ExpressServer/wiki/Group-Agreement)
