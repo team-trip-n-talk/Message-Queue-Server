@@ -44,6 +44,13 @@ exports.handshake = (socket, next) => {
   }  
 };
 
+/**
+* @method message
+* @param {object} socket - socket coming from client side app that contains the decoded token
+* @returns {object} returns an object containing the message payload that was sent with the username and date added
+* @desc returns the message payload after verification passes from io.use with username and date attached
+*/
+
 exports.message = (socket) => {
   console.log(socket.username, 'has joined!');
   socket.on('message', payload => {
@@ -51,6 +58,14 @@ exports.message = (socket) => {
     socket.broadcast.emit('message', payload);
   });
 };
+
+/**
+* @method _addUsernameAndDate
+* @param {object} 
+* @param {object} socket - socket coming from client side app that contains the decoded token
+* @returns {object} returns an object containing the message payload that was sent with the username and date added
+* @desc returns the message payload after verification passes from io.use with username and date attached
+*/
 
 function _addUsernameAndDate(payload, socket){
   payload = JSON.parse(payload);
@@ -63,10 +78,3 @@ function _addUsernameAndDate(payload, socket){
 
 
 
-/**
-* @method on
-* @param {function} function
-* @param {object} socket - socket coming from client side app
-* @returns {object} returns an object containing the message payload that was sent
-* @desc .on returns the message payload after verification passes from io.use
-*/
