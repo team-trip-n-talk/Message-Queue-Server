@@ -12,7 +12,7 @@ Tia Rose, Jeff Lawrence, Felipe Delatorre
 * [Heroku](https://trip-n-talk-message-server.herokuapp.com/)
 
 #### Documentation
-* [JSDOC](https://keen-saha-4ec8c1.netlify.com/module-messagehandler)
+* [JSDOC](https://keen-saha-4ec8c1.netlify.com/)
 * [Data Flow Chart](https://www.lucidchart.com/documents/edit/b4adc909-52d2-460a-9a0a-d8cfb7211ec5/0)
 
 ### Module
