@@ -16,8 +16,7 @@ Tia Rose, Jeff Lawrence, Felipe Delatorre
 * [Data Flow Chart](https://www.lucidchart.com/documents/edit/b4adc909-52d2-460a-9a0a-d8cfb7211ec5/0)
 
 ### Module
-* `server.js` - server that listens for incoming messages, authenticates them with attached tokens and broadcasts messages
-* `messageHandler.js` - contains helper functions handshake, message, _addUserNameAndDate
+* [Modules Wiki](https://github.com/team-trip-n-talk/Message-Queue-Server/wiki/Modules)
 
 ### Setup
 
