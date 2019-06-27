@@ -1,8 +1,30 @@
 'use strict';
 
+/**
+* Message Handler Module
+* @module messageHandler
+*/
+
 const jwt = require('jsonwebtoken');
 
+/**
+* Export object for messaging functions
+* @type {Object}
+* @desc allows use of messaging functions on the server.js page for socket.io
+*/
+
 module.exports = exports = {};
+
+/**
+* @method handshake
+* @param {object} socket - socket coming from client side app
+* @param {function} next - next function which calls next middleware
+* on success
+* @returns {function} next - which allows the user to proceed to the io.on connection and call the message function
+* on failure
+* @returns {string} errors out and returns'Authentication error'
+* @desc Checks to see if a user has a valid token to establish a connection then proceeds to .on or returns an authentication error
+*/
 
 exports.handshake = (socket, next) => {
   // We could test for this after we solve the issue.
@@ -38,3 +60,13 @@ function _addUsernameAndDate(payload, socket){
 
   return payload;
 }
+
+
+
+/**
+* @method on
+* @param {function} function
+* @param {object} socket - socket coming from client side app
+* @returns {object} returns an object containing the message payload that was sent
+* @desc .on returns the message payload after verification passes from io.use
+*/
