@@ -1,10 +1,5 @@
 'use strict';
 
-/**
-* Server Module
-* @module server
-*/
-
 //Dependencies
 require('dotenv').config();
 const io = require('socket.io')(process.env.PORT);
