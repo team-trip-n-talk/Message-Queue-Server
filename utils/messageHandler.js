@@ -27,15 +27,13 @@ module.exports = exports = {};
 */
 
 exports.handshake = (socket, next) => {
-  // We could test for this after we solve the issue.
-  // Breaks message server with invalid token. 
-  // Should be easy to fix. Should maybe emit message back if invalid token
+
   if (socket.handshake.query && socket.handshake.query.token){
-    let username = jwt.verify(socket.handshake.query.token, process.env.SECRET_KEY).username;
-    socket.username = username;
+    
     jwt.verify(socket.handshake.query.token, process.env.SECRET_KEY, function(err) {
       if(err) return next(new Error('Authentication error'));
-      //    
+      let username = jwt.verify(socket.handshake.query.token, process.env.SECRET_KEY).username;
+      socket.username = username;
       next();
     });
   } else {
