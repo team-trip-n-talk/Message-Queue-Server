@@ -54,7 +54,7 @@ exports.handshake = (socket, next) => {
 exports.message = (socket) => {
   console.log(socket.username, 'has joined!');
   socket.on('message', payload => {
-    payload = _addUsernameAndDate(payload, socket);
+    payload = exports._addUsernameAndDate(payload, socket);
     socket.broadcast.emit('message', payload);
   });
 };
@@ -67,14 +67,14 @@ exports.message = (socket) => {
 * @desc returns the message payload with username and date attached
 */
 
-function _addUsernameAndDate(payload, socket){
+exports._addUsernameAndDate = (payload, socket) => {
   payload = JSON.parse(payload);
   payload.username = socket.username;
   payload.timeSent = new Date();
   payload = JSON.stringify(payload);
 
   return payload;
-}
+};
 
 
 
