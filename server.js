@@ -58,13 +58,6 @@ io.use(function(socket, next){
   .on('connection', function(socket) {
     console.log(socket.username, 'has joined!');
     socket.on('message', payload => {
-
-      // We could test for this
-      // payload = JSON.parse(payload);
-      // payload.username = socket.username;
-      // payload.timeSent = new Date();
-      // payload = JSON.stringify(payload);
-      //
       payload = utils.addUsernameAndDate(payload, socket);
       socket.broadcast.emit('message', payload);
     });
