@@ -22,7 +22,7 @@ module.exports = exports = {};
 * on success
 * @returns {function} next - which allows the user to proceed to the io.on connection and call the message function
 * on failure
-* @returns {string} errors out and returns'Authentication error'
+* @returns {string} throw new error'Authentication error'
 * @desc Checks to see if a user has a valid token to establish a connection then proceeds to .on or returns an authentication error
 */
 
@@ -61,10 +61,10 @@ exports.message = (socket) => {
 
 /**
 * @method _addUsernameAndDate
-* @param {object} 
+* @param {object} payload - the message payload
 * @param {object} socket - socket coming from client side app that contains the decoded token
-* @returns {object} returns an object containing the message payload that was sent with the username and date added
-* @desc returns the message payload after verification passes from io.use with username and date attached
+* @returns {object} returns the message payload that was sent with the username and date added
+* @desc returns the message payload with username and date attached
 */
 
 function _addUsernameAndDate(payload, socket){
