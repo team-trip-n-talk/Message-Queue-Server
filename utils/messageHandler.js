@@ -71,6 +71,7 @@ exports._addUsernameAndDate = (payload, socket) => {
   payload = JSON.parse(payload);
   payload.username = socket.username;
   payload.timeSent = new Date();
+  payload.timeSent = payload.timeSent.toLocaleString();
   payload = JSON.stringify(payload);
 
   return payload;
