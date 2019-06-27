@@ -12,11 +12,12 @@ Tia Rose, Jeff Lawrence, Felipe Delatorre
 * [Heroku](https://trip-n-talk-message-server.herokuapp.com/)
 
 #### Documentation
-* [JSDOC](https://trip-n-talk-message-server.herokuapp.com/docs)
+* [JSDOC](https://keen-saha-4ec8c1.netlify.com/module-messagehandler)
 * [Data Flow Chart](https://www.lucidchart.com/documents/edit/b4adc909-52d2-460a-9a0a-d8cfb7211ec5/0)
 
 ### Module
 * `server.js` - server that listens for incoming messages, authenticates them with attached tokens and broadcasts messages
+* `messageHandler.js` - contains helper functions handshake, message, _addUserNameAndDate
 
 ### Setup
 
@@ -31,4 +32,4 @@ Tia Rose, Jeff Lawrence, Felipe Delatorre
 * `npm test`
 
 ### Group Agreement
-* [Group Agreement](https://github.com/team-trip-n-talk/ExpressServer/wiki/Group-Agreement)
+* [Group Agreement](https://github.com/team-trip-n-talk/Message-Queue-Server/wiki/Group-Agreement)
