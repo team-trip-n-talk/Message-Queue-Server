@@ -37,7 +37,9 @@ app.use('/docs', express.static('docs'));
 
 io.use(function(socket, next){
   if (socket.handshake.query && socket.handshake.query.token){
-
+    let username = jwt.verify(socket.handshake.query.token, process.env.SECRET_KEY).username;
+    socket.username = username;
+    // console.log('after being verify', username);
     jwt.verify(socket.handshake.query.token, process.env.SECRET_KEY, function(err) {
       if(err) return next(new Error('Authentication error'));
       
@@ -49,8 +51,12 @@ io.use(function(socket, next){
   }    
 })
   .on('connection', function(socket) {
-
+    console.log(socket.username);
     socket.on('message', payload => {
+      payload = JSON.parse(payload);
+      payload.name = socket.username;
+      payload.timeSent = new Date();
+      payload = JSON.stringify(payload);
       socket.broadcast.emit('message', payload);
     });
   });
