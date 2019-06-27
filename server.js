@@ -11,6 +11,9 @@ const io = require('socket.io')(process.env.PORT);
 const jwt = require('jsonwebtoken');
 const express = require('express');
 
+// utils
+const utils = require('./utils/messageHandler');
+
 // Prepare the express app
 const app = express();
 
@@ -36,13 +39,15 @@ app.use('/docs', express.static('docs'));
 */
 
 io.use(function(socket, next){
+  // We could test for this after we solve the issue.
+  // Breaks message server with invalid token. 
+  // Should be easy to fix. Should maybe emit message back if invalid token
   if (socket.handshake.query && socket.handshake.query.token){
     let username = jwt.verify(socket.handshake.query.token, process.env.SECRET_KEY).username;
     socket.username = username;
-    // console.log('after being verify', username);
     jwt.verify(socket.handshake.query.token, process.env.SECRET_KEY, function(err) {
       if(err) return next(new Error('Authentication error'));
-      
+      //    
       next();
     });
   } else {
@@ -51,12 +56,16 @@ io.use(function(socket, next){
   }    
 })
   .on('connection', function(socket) {
-    console.log(socket.username);
+    console.log(socket.username, 'has joined!');
     socket.on('message', payload => {
-      payload = JSON.parse(payload);
-      payload.name = socket.username;
-      payload.timeSent = new Date();
-      payload = JSON.stringify(payload);
+
+      // We could test for this
+      // payload = JSON.parse(payload);
+      // payload.username = socket.username;
+      // payload.timeSent = new Date();
+      // payload = JSON.stringify(payload);
+      //
+      payload = utils.addUsernameAndDate(payload, socket);
       socket.broadcast.emit('message', payload);
     });
   });
