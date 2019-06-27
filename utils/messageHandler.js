@@ -4,15 +4,6 @@ const jwt = require('jsonwebtoken');
 
 module.exports = exports = {};
 
-function addUsernameAndDate(payload, socket){
-  payload = JSON.parse(payload);
-  payload.username = socket.username;
-  payload.timeSent = new Date();
-  payload = JSON.stringify(payload);
-
-  return payload;
-}
-
 exports.handshake = (socket, next) => {
   // We could test for this after we solve the issue.
   // Breaks message server with invalid token. 
@@ -34,7 +25,16 @@ exports.handshake = (socket, next) => {
 exports.message = (socket) => {
   console.log(socket.username, 'has joined!');
   socket.on('message', payload => {
-    payload = addUsernameAndDate(payload, socket);
+    payload = _addUsernameAndDate(payload, socket);
     socket.broadcast.emit('message', payload);
   });
+};
+
+function _addUsernameAndDate(payload, socket){
+  payload = JSON.parse(payload);
+  payload.username = socket.username;
+  payload.timeSent = new Date();
+  payload = JSON.stringify(payload);
+
+  return payload;
 }
